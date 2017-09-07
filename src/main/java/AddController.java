@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -71,19 +72,21 @@ public class AddController {
     protected String eHour;
     protected String eMin;
 
-    private String dayy;
     private ArrayList ev;
+    private JdbcSQLiteConnection db;
+    private String dayy;
 
     @FXML
     public void initialize(){
         dayy = String.valueOf(Controller.convert(Controller.day));
-        ev = Controller.getEvent();
+        db = Controller.db;
+
         dateDe.setText(dayy);
         startHour.setItems(cHour);
         startMin.setItems(cMin);
         endHour.setItems(cHour);
         endMin.setItems(cMin);
-    };
+    }
 
     @FXML
     protected void submitEvent(ActionEvent event){
@@ -100,10 +103,8 @@ public class AddController {
             eHour = endHour.getValue()+"";
             eMin = endMin.getValue()+"";
 
-            DateCollection collection = new DateCollection(dayy, sHour+":"+sMin+"-"+eHour+":"+eMin,
-                    inputTitle, inputPlace, inputNote);
-            String[] da = collection.getCollectionDetail();
-            ev.add(da);
+            db.add("\'"+dayy+"\'", "\'"+sHour+':'+sMin+"-"+eHour+":"+eMin+"\'",
+                    "\'"+inputTitle+"\'", "\'"+inputPlace+"\'", "\'"+inputNote+"\'");
 
             stage.setScene(new Scene((Parent) loadMain.load()));
         }catch (IOException event1){

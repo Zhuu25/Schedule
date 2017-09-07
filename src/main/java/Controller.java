@@ -36,7 +36,8 @@ public class Controller {
     protected static Button addButton;
 
     protected static LocalDate day;
-    private static ArrayList event = new ArrayList();
+    protected static JdbcSQLiteConnection db = new JdbcSQLiteConnection();
+
 
     @FXML
     protected void addEvent(ActionEvent event){
@@ -51,39 +52,18 @@ public class Controller {
         }
     }
 
-    //ยังไม่สามารถแอดอีเว้นต์ได้มากกว่า1งาน
     @FXML
-    protected void show(ActionEvent e){
-        day = date.getValue();
-
-        if (event.size() > 0){
-//            Collections.sort(event);        //ไม่สามารถsortได้
-            ArrayList<String[]> sorted = event;
-
-            String string = String.valueOf(Controller.convert(Controller.day));
-            for (int i = 0; i < sorted.size(); i++){
-                if (string.equals(sorted.get(i)[0])){
-                    textArea.appendText(sorted.get(i)[1]+"     ");
-                    textArea.appendText("Title: "+sorted.get(i)[2]+"     ");
-                    textArea.appendText("Place: "+sorted.get(i)[3]+"     ");
-                    textArea.appendText("Note: "+sorted.get(i)[4]);
-                    textArea.appendText("\n");
-
-                }
-                else if (i == sorted.size()-1){
-                    textArea.setText("You do not have event on this day.");
-                }
-            }
-        }
-        else{
-            textArea.setText("You do not have event on this day.");
-        }
-        pane.opacityProperty().setValue(1);
+    protected void edit(ActionEvent e){
 
     }
 
-    public static ArrayList getEvent() {
-        return event;
+    @FXML
+    protected void show(ActionEvent e){
+        day = date.getValue();
+        String dayy = String.valueOf(Controller.convert(day));
+        db.show(dayy, textArea);
+        pane.opacityProperty().setValue(1);
+
     }
 
     protected static String convert(LocalDate da){
