@@ -53,6 +53,19 @@ public class Controller {
     }
 
     @FXML
+    protected void editEvent(ActionEvent event){
+        day = date.getValue();
+        Button sub = (Button) event.getSource();
+        Stage stage = (Stage) sub.getScene().getWindow();
+        FXMLLoader loadAdd = new FXMLLoader(getClass().getResource("EditPage.fxml"));
+        try{
+            stage.setScene(new Scene((Parent) loadAdd.load()));
+        }catch (IOException event1){
+            event1.printStackTrace();
+        }
+    }
+
+    @FXML
     protected void edit(ActionEvent e){
 
     }

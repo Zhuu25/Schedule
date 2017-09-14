@@ -88,11 +88,17 @@
                                        <padding>
                                           <Insets left="30.0" />
                                        </padding>
+                                       <font>
+                                          <Font name="David" size="18.0" />
+                                       </font>
                                     </Label>
                                     <Label text="Note:" GridPane.rowIndex="2">
                                        <padding>
                                           <Insets left="30.0" />
                                        </padding>
+                                       <font>
+                                          <Font name="David" size="18.0" />
+                                       </font>
                                     </Label>
                                     <TextField fx:id="place" GridPane.rowIndex="1">
                                        <GridPane.margin>
@@ -121,7 +127,10 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label alignment="CENTER" prefHeight="25.0" prefWidth="316.0" text="Start Time" />
+                                    <Label alignment="CENTER" prefHeight="25.0" prefWidth="316.0" text="Start Time">
+                                       <font>
+                                          <Font name="David" size="18.0" />
+                                       </font></Label>
                                     <GridPane GridPane.rowIndex="1">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="161.0" />
@@ -157,6 +166,9 @@
                                        <GridPane.margin>
                                           <Insets />
                                        </GridPane.margin>
+                                       <font>
+                                          <Font name="David" size="18.0" />
+                                       </font>
                                     </Label>
                                     <GridPane GridPane.rowIndex="1">
                                       <columnConstraints>
@@ -182,6 +194,28 @@
                                  </BorderPane.margin>
                               </GridPane>
                            </right>
+                           <bottom>
+                              <GridPane BorderPane.alignment="CENTER">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Repeat:">
+                                       <font>
+                                          <Font name="David" size="18.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="325.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <ComboBox fx:id="repeat" prefWidth="150.0" promptText="None" GridPane.columnIndex="1" />
+                                 </children>
+                              </GridPane>
+                           </bottom>
                         </BorderPane>
                      </top>
                   </BorderPane>

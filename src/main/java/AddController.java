@@ -38,6 +38,12 @@ public class AddController {
             "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"
     );
 
+    ObservableList<String> re = FXCollections.observableArrayList(
+            "None", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
+            "Saturday", "Sunday", "Everyday", "Every month"
+    );
+
+
     @FXML
     protected Label dateDe;
 
@@ -53,6 +59,9 @@ public class AddController {
     protected ComboBox endHour;
     @FXML
     protected ComboBox endMin;
+
+    @FXML
+    protected ComboBox repeat;
 
     @FXML
     protected TextField place;
@@ -71,6 +80,7 @@ public class AddController {
     protected String sMin;
     protected String eHour;
     protected String eMin;
+    protected String rep;
 
     private ArrayList ev;
     private JdbcSQLiteConnection db;
@@ -86,6 +96,7 @@ public class AddController {
         startMin.setItems(cMin);
         endHour.setItems(cHour);
         endMin.setItems(cMin);
+        repeat.setItems(re);
     }
 
     @FXML
@@ -102,9 +113,11 @@ public class AddController {
             sMin = startMin.getValue()+"";
             eHour = endHour.getValue()+"";
             eMin = endMin.getValue()+"";
+            rep = repeat.getValue()+"";
 
             db.add("\'"+dayy+"\'", "\'"+sHour+':'+sMin+"-"+eHour+":"+eMin+"\'",
-                    "\'"+inputTitle+"\'", "\'"+inputPlace+"\'", "\'"+inputNote+"\'");
+                    "\'"+inputTitle+"\'", "\'"+inputPlace+"\'", "\'"+inputNote+"\'",
+                    "\'"+rep+"\'");
 
             stage.setScene(new Scene((Parent) loadMain.load()));
         }catch (IOException event1){

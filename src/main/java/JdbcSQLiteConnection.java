@@ -27,19 +27,14 @@ public class JdbcSQLiteConnection {
         }
     }
 
-    public void add(String date, String time, String title, String place, String note){
+    public void add(String date, String time, String title, String place, String note, String repeat){
         String sql = "insert into calendar values("+date+","+time+","+title+","+
-                place+","+note+")";
+                place+","+note+","+repeat+")";
         try{
             statement.executeUpdate(sql+"");
         }catch (SQLException ex){
             ex.printStackTrace();
         }
-    }
-
-    public void beforeShow(String date){
-        String sql = "Select Time, Title, Place, Note from Calendar where date = "+
-                "\'"+date+"\'";
     }
 
     public void show(String date, TextArea textArea){
@@ -67,8 +62,20 @@ public class JdbcSQLiteConnection {
         }
     }
 
-    public void edit(){
-        String sql = "";
+    public void delete(String date, String time, String ti, String pl, String no, String re){
+        String sql = "Delete from Calendar where Date = "+"\'"+date+"\' AND Time = "+
+                "\'"+time+"\' AND Title = "+ "\'"+ti+"\' AND Place = "+ "\'"+pl+"\' AND " +
+                "Note = "+ "\'"+no+"\' AND Detail = "+ "\'"+re+"\'";
+        try{
+            statement.executeUpdate(sql+"");
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+
+
+    public Statement getStatement(){
+        return statement;
     }
 
 }

@@ -34,6 +34,7 @@
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -41,12 +42,26 @@
                <children>
                   <Button fx:id="showButton" alignment="CENTER" mnemonicParsing="false" onAction="#show" text="Show">
                      <GridPane.margin>
-                        <Insets left="175.0" right="20.0" />
+                        <Insets left="110.0" right="20.0" />
                      </GridPane.margin>
+                     <font>
+                        <Font name="David" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="editButton" mnemonicParsing="false" onAction="#editEvent" text="Edit Event" GridPane.columnIndex="2">
+                     <GridPane.margin>
+                        <Insets left="85.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="David" size="16.0" />
+                     </font>
                   </Button>
                   <Button fx:id="addButton" mnemonicParsing="false" onAction="#addEvent" text="Add Event" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="David" size="16.0" />
+                     </font>
                      <GridPane.margin>
-                        <Insets left="125.0" />
+                        <Insets left="85.0" />
                      </GridPane.margin>
                   </Button>
                </children>
